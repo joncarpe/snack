@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+
+
+
+  <div class="field">
+   <%= f.collection_select(:category_id, Category.all, :id, :category_name, :prompt => 'Select One') %>
+  </div>
+
+
+
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -21,6 +31,7 @@
   </div>
   <div class="field">
     <%= f.label :worth %><br>
+    <p>(Enter a dollar amount in snacks you're willing to pay for the help.)</p>
     <%= f.text_field :worth %>
   </div>
   <div class="field">

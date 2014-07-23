@@ -5,10 +5,12 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :responses
-
   resources :questions do
-    resources :responses
+    resources :responses, :only => [:create]
+
+  # i wrote:
+  # get 'questions/:id/responses'
+
   end
 
 

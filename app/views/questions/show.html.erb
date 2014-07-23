@@ -11,14 +11,30 @@
 </p>
 
 <p>
+  <strong>Submitted by:</strong>
+  <%= @question.user_id %>
+</p>
+
+<p>
   <strong>Worth:</strong>
   <%= @question.worth %>
 </p>
 
 <p>
-  <strong>Spam:</strong>
-  <%= @question.spam %>
+  <% @question.spam %>
 </p>
+
+
+
+
+ <p><strong>Responses</strong></p>
+ <div id="responses">
+         <%= render :partial => @question.responses %>
+ </div>
+
+
+
+
 
 
 <h2>Add a great response for a shot at a snack:</h2>

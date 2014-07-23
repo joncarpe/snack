@@ -24,18 +24,13 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = Response.new(response_params)
-
-    respond_to do |format|
-      if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
-        format.json { render :show, status: :created, location: @response }
-      else
-        format.html { render :new }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
-      end
+    @question = Question.find(params[:question_id])
+    @response = @question.responses.create(response_params)
+    redirect_to @question 
     end
   end
+
+  
 
   # PATCH/PUT /responses/1
   # PATCH/PUT /responses/1.json
@@ -43,10 +38,10 @@ class ResponsesController < ApplicationController
     respond_to do |format|
       if @response.update(response_params)
         format.html { redirect_to @response, notice: 'Response was successfully updated.' }
-        format.json { render :show, status: :ok, location: @response }
+        # format.json { render :show, status: :ok, location: @response }
       else
-        format.html { render :edit }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
+        format.html { redirect_to :edit }
+        # format.json { render json: @response.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,4 +66,5 @@ class ResponsesController < ApplicationController
     def response_params
       params.require(:response).permit(:content, :state)
     end
+  end
 end

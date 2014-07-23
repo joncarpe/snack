@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720230651) do
+ActiveRecord::Schema.define(version: 20140722022558) do
 
   create_table "add_question_id_to_responses", force: true do |t|
     t.datetime "created_at"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 20140720230651) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.integer  "user_id"
   end
 
   add_index "questions", ["category_id"], name: "index_questions_on_category_id"
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "responses", force: true do |t|
     t.text     "content"
