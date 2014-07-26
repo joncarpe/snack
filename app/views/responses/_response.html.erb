@@ -3,7 +3,7 @@
                 <%= response.content %>
                 <br/>
                 <em>
-                        Posted <%= time_ago_in_words(response.created_at) %> ago by ADD USER INFO HERE
+                        Posted <%= time_ago_in_words(response.created_at) %> by <%= response.user_id  %>
                 </em>                
         </p>
 <% end %>
