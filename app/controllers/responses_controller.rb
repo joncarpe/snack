@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  before_action :set_response, only: [:show, :edit, :update, :destroy]
+  before_action :set_response, only: [:show, :edit, :update, :destroy]  
 
   # GET /responses
   # GET /responses.json
@@ -27,7 +27,6 @@ class ResponsesController < ApplicationController
     @question = Question.find(params[:question_id])
     @response = @question.responses.create(response_params)
     redirect_to @question 
-    end
   end
 
   
@@ -67,4 +66,4 @@ class ResponsesController < ApplicationController
       params.require(:response).permit(:content, :state)
     end
   end
-end
+

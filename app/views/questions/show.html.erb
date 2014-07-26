@@ -26,8 +26,8 @@
 
 
 
-
- <p><strong>Responses</strong></p>
+ <p>--------------</p>
+ <p><h3>Responses</h3></p>
  <div id="responses">
          <%= render :partial => @question.responses %>
  </div>
@@ -37,7 +37,7 @@
 
 
 
-<h2>Add a great response for a shot at a snack:</h2>
+<h4>Add a great response for a shot at a snack:</h4>
 <%= form_for([@question, @question.responses.build]) do |f| %>
   <p>
     <%= f.label :user %><br>
