@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  # internet_help: everything after :users
+  devise_for :users
+  # :controllers => {:registrations => "registrations"}, :path_names => {
+  #  :sign_up => 'signup' }
+
   get 'welcome/index'
 
   resources :users
-
+  
   resources :categories
 
   resources :questions do
