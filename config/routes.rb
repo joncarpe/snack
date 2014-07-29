@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # internet_help: everything after :users
-  devise_for :users
+  devise_for :users, except: [:new] 
   # :controllers => {:registrations => "registrations"}, :path_names => {
   #  :sign_up => 'signup' }
 

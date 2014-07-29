@@ -1,5 +1,7 @@
 class ResponsesController < ApplicationController
-  before_action :set_response, only: [:show, :edit, :update, :destroy]  
+  before_action :authenticate_user!, except: [:index, :show] 
+  before_action :set_response, only: [:show, :edit, :update, :destroy] 
+
 
   # GET /responses
   # GET /responses.json
@@ -15,6 +17,7 @@ class ResponsesController < ApplicationController
   # GET /responses/new
   def new
     @response = Response.new
+    @user = current_user
   end
 
   # GET /responses/1/edit
@@ -25,7 +28,9 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @question = Question.find(params[:question_id])
-    @response = @question.responses.create(response_params)
+    @response = @question.responses.build(response_params)
+    @response.user = current_user
+    @response.save
     redirect_to @question 
   end
 
